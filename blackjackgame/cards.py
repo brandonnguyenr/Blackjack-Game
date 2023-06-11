@@ -41,16 +41,16 @@ class Deck:
 
     def __init__(self):
         """Create one whole new deck of cards. The cards are not in new deck order."""
-        self.cards = [Card(rank,  suit) for suit in self.suit for rank in self.rank]
+        self.cards = [Card(rank,  suit) for suit in self.suits for rank in self.ranks]
         self._cursor = 0
 
     def __len__(self):
         """Return the number of cards in the deck."""
-        return len(self._cards)
+        return len(self.cards)
     
     def __getitem__(self, position):
         """Return the card at the given postion"""
-        return self._cards[position]
+        return self.cards[position]
     
     def __iter__(self):
         """Iterator to start from the face of the deck and iterate to the bottom."""
@@ -70,19 +70,19 @@ class Deck:
     def shuffle(self, n=1):
         """Shuffle the deck n times. Default is 1 time."""
         for _ in range(n):
-            shuffle(self._cards)
+            shuffle(self.cards)
 
     def cut(self):
         """Cut the deck at approximately the half way point +/- 10 cards."""
-        extra = ceil(len(self._cards) * 0.2)
-        half = (len(self._cards) // 2) + randrange(-extra, extra)
-        tophalf = self._cards[:half]
-        bottomhalf = self._cards[half:]
-        self._cards = bottomhalf + tophalf
+        extra = ceil(len(self.cards) * 0.2)
+        half = (len(self.cards) // 2) + randrange(-extra, extra)
+        tophalf = self.cards[:half]
+        bottomhalf = self.cards[half:]
+        self.cards = bottomhalf + tophalf
 
     def deal(self, n=1):
         """Deal n cards. Default is 1 card."""
-        return [self._cards.pop() for x in range(n)]
+        return [self.cards.pop() for x in range(n)]
     
     def merge(self, deck):
         """Merge the current deck with the deck passed as a parameter."""
@@ -90,7 +90,7 @@ class Deck:
 
     def __str__(self):
         """Convert the deck into a string."""
-        return ", ".join(map(str, self._cards))
+        return ", ".join(map(str, self.cards))
     
 
 def card_value(c):
