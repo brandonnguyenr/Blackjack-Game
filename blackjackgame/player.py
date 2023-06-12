@@ -15,10 +15,17 @@ class Player:
         self.hand.extend(card)
 
     def see_hand(self):
-            """"Print"""
-            for card in self.hand:
-                print(f"Rank: {card.rank}, Value: {Deck.value_dict[card.rank]}")
+        """"Print the hand of the current player"""
+        for card in self.hand:
+            print(f"Rank: {card.rank}, Value: {Deck.value_dict[card.rank]}")
+
+    def calculate_hand(self):
+         """This will calculate the hand of the current player"""
+         value = sum(Deck.value_dict[card.rank] for card in self.hand)
+         if 'Ace' in [card.rank for card in self.hand] and value + 10 <= 21:
+             value += 10
+         return value
 
     def __str__(self):
         """Convert the player into a string."""
-        return f"{self.name}: \n{', '.join(str(card) for card in self.hand)}\n"
+        return f"{self.name}: {', '.join(str(card) for card in self.hand)}"

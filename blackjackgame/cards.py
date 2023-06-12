@@ -86,7 +86,7 @@ class Deck:
     
     def merge(self, deck):
         """Merge the current deck with the deck passed as a parameter."""
-        self._cards = self._cards + deck.cards
+        self.cards = self.cards + deck.cards
 
     def __str__(self):
         """Convert the deck into a string."""
