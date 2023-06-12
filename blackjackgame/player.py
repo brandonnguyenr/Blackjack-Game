@@ -20,11 +20,19 @@ class Player:
             print(f"Rank: {card.rank}, Value: {Deck.value_dict[card.rank]}")
 
     def calculate_hand(self):
-         """This will calculate the hand of the current player"""
-         value = sum(Deck.value_dict[card.rank] for card in self.hand)
-         if 'Ace' in [card.rank for card in self.hand] and value + 10 <= 21:
-             value += 10
-         return value
+        """This will calculate the hand of the current player"""
+        value = sum(Deck.value_dict[card.rank] for card in self.hand)
+        if 'Ace' in [card.rank for card in self.hand] and value + 10 <= 21:
+            value += 10
+        return value
+    
+    def hide_second_card(self):
+        if len(self.hand) >= 2:
+            self.hand[1].hide()
+
+    def reveal_cards(self):
+        if len(self.hand) >= 2:
+            self.hand[1].reveal()
 
     def __str__(self):
         """Convert the player into a string."""

@@ -87,6 +87,5 @@ def main():
 
     print('\n\nHope you had fun! See you next time!')
 
-
 if __name__ == '__main__':
     main()
