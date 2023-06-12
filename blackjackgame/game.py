@@ -48,15 +48,13 @@ class Game:
                         print(player)
                         print('Current Hand Value:', player.calculate_hand())
                         break
-                elif choice =='n':
-   
-                    break
-
-                print(player)
-                print('Current Hand Value:', player.calculate_hand())
-                
+                elif choice =='n':  
+                        print(player)
+                        print('Current Hand Value:', player.calculate_hand())
+                        break
+          
         if player.name == 'Dealer':
-            print(player.print_all())
+            print(player)
             self.dealers_cards(player)
 
         return player.calculate_hand()
