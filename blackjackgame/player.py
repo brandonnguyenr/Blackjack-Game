@@ -1,5 +1,7 @@
 """A Player will be invented and attain everyting that belongs to that player"""
 
+from blackjackgame.cards import Deck
+
 class Player:
     """Player class for the Blackjack game."""
 
@@ -8,10 +10,15 @@ class Player:
         self.name = name
         self.hand = []
 
-    def add_card(self, card):
+    def add_cards(self, card):
         """Adding a card to the players hand."""
-        self.hand.append(card)
+        self.hand.extend(card)
+
+    def see_hand(self):
+            """"Print"""
+            for card in self.hand:
+                print(f"Rank: {card.rank}, Value: {Deck.value_dict[card.rank]}")
 
     def __str__(self):
         """Convert the player into a string."""
-        return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
+        return f"{self.name}: \n{', '.join(str(card) for card in self.hand)}\n"

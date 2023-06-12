@@ -35,13 +35,13 @@ class Deck:
     """Deck class to hold 52 French Suited playing cards."""
 
     ranks = ['Ace'] + [str(x) for x in range(2,11)] + 'Jack Queen King'.split()
-    suits = 'Hearts Diamonds Spades Clubs'.split()
+    suits = '♣️ ♥️ ♠️ ♦️'.split()
     values = list(range(1,11)) + [10, 10, 10]
     value_dict = dict(zip(ranks, values))
 
     def __init__(self):
         """Create one whole new deck of cards. The cards are not in new deck order."""
-        self.cards = [Card(rank,  suit) for suit in self.suits for rank in self.ranks]
+        self.cards = [Card(rank, suit) for suit in self.suits for rank in self.ranks]
         self._cursor = 0
 
     def __len__(self):
@@ -86,7 +86,7 @@ class Deck:
     
     def merge(self, deck):
         """Merge the current deck with the deck passed as a parameter."""
-        self._cards = self._cards + deck._cards
+        self._cards = self._cards + deck.cards
 
     def __str__(self):
         """Convert the deck into a string."""
