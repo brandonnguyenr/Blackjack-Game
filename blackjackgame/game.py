@@ -24,14 +24,10 @@ class Game:
 
     def deal_two_cards(self, player):
         """Deal one card to each player one-by-one."""
-
-        if player.name != 'Dealer':
-            for _ in range(2):
-                for player in self.players:
-                    player.add_cards(self.deck.deal())
-        else:
-            player.add_cards(self.deck.deal())
-
+        for _ in range(2):
+            for player in self.players:
+                player.add_cards(self.deck.deal())
+        
     def dealers_cards(self, player):
         """Dealers cards"""
         if player.name == 'Dealer':
@@ -40,12 +36,10 @@ class Game:
 
     def play_round(self, player):
         """Play a round of the Game"""
-        print(player)
         if player.name != 'Dealer':
+            print(player)
             print('Current Hand Value:', player.calculate_hand())
-
-        if player.name != 'Dealer':
-            while player.calculate_hand() <= 21:
+            while player.calculate_hand() < 21:
                 choice = input('\nDo you want to hit? (y/n): ').lower()
                 print('\n')
                 if choice == 'y':
@@ -54,13 +48,15 @@ class Game:
                         print(player)
                         print('Current Hand Value:', player.calculate_hand())
                         break
-                    else:
-                        print(player)
-                        print('Current Hand Value:', player.calculate_hand())
                 elif choice =='n':
+   
                     break
+
+                print(player)
+                print('Current Hand Value:', player.calculate_hand())
                 
         if player.name == 'Dealer':
+            print(player.print_all())
             self.dealers_cards(player)
 
         return player.calculate_hand()

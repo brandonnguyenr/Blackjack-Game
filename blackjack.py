@@ -43,11 +43,15 @@ def main():
         player1.hand = []
         dealer.hand = []
 
-        game = Game([player1, dealer])
+        game = Game([dealer, player1])
+        
+        double_down = input('Would you like to double down? (y/n): ')
         game.play_game(dealer)
-
         player1_hand_value = game.play_round(player1)
         dealer_hand_value = game.play_round(dealer)
+        
+        if double_down == 'y':
+            betted_amount = betted_amount + betted_amount
 
         if player1_hand_value > 21:
             print("Player BUST! Dealer wins.")

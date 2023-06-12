@@ -14,11 +14,6 @@ class Player:
         """Adding a card to the players hand."""
         self.hand.extend(card)
 
-    def see_hand(self):
-        """"Print the hand of the current player"""
-        for card in self.hand:
-            print(f"Rank: {card.rank}, Value: {Deck.value_dict[card.rank]}")
-
     def calculate_hand(self):
         """This will calculate the hand of the current player"""
         value = sum(Deck.value_dict[card.rank] for card in self.hand)
@@ -26,14 +21,13 @@ class Player:
             value += 10
         return value
     
-    def hide_second_card(self):
-        if len(self.hand) >= 2:
-            self.hand[1].hide()
-
-    def reveal_cards(self):
-        if len(self.hand) >= 2:
-            self.hand[1].reveal()
-
+    def print_all(self):
+        """Print all the cards"""
+        return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
+    
     def __str__(self):
         """Convert the player into a string."""
-        return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
+        if self.name == 'Dealer':
+            return f"{self.name}: {str(self.hand[0])}, ?"
+        else:
+            return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
