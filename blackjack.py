@@ -20,13 +20,25 @@ def main():
     max_bet = 10000
     winnings = 0
     play_again = 'y'
-
-    name = input('\nEnter your name: ')
-    betted_amount = input('Hello ' + name + ', how much would you like tp bet out of your $10,000?: $')
-    betted_amount = int(betted_amount)
-    player1 = player.Player(name)
     dealer = player.Player('Dealer')
     
+    name = input('\nEnter your name: ')
+    player1 = player.Player(name)
+
+    while True:
+        betted_amount = input('Hello ' + name + ', how much would you like to bet out of your $10,000?: $')
+
+        if not betted_amount.isdigit():
+            print("Invalid input. Please enter a valid integer.")
+            continue
+
+        betted_amount = int(betted_amount)
+
+        if betted_amount > 10000:
+            print("Bet amount cannot exceed $10,000.")
+        else:
+            break
+
     while play_again == 'y':
         player1.hand = []
         dealer.hand = []
@@ -59,8 +71,19 @@ def main():
         play_again = input('You have $' + str(max_bet) + " left to bet! Want to play again? (y/n): ")
 
         if play_again == 'y':
-            betted_amount = input('How much would you like to bet this time?: $')
-            betted_amount = float(betted_amount)
+                while True:
+                    betted_amount = input('How much would you like to bet this time?: $')
+
+                    if not betted_amount.isdigit():
+                        print("Invalid input. Please enter a valid integer.")
+                        continue
+
+                    betted_amount = float(betted_amount)
+
+                    if betted_amount > max_bet:
+                        print("Bet amount cannot exceed your amount.")
+                    else:
+                        break
 
     print('\n\nHope you had fun! See you next time!')
 
