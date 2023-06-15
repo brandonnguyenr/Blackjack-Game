@@ -42,13 +42,13 @@ class Game:
         """Play a round of the Game"""
         if player.name != 'Dealer':
             print(player)
-            print('Current Hand Value:', player.calculate_hand())
+            print('Your Hand Value:', player.calculate_hand())
             while player.calculate_hand() < 21:
                 choice = input('Do you want to hit? (y/n): ').lower()
                 if choice == 'y':
                     player.add_cards(self.deck.deal())
                     printout = player.print_all()
-                    print('Current Hand Value:', player.calculate_hand())
+                    print('Your Hand Value:', player.calculate_hand())
                     print(printout)
                     if player.calculate_hand() > 21:
                         break
@@ -58,7 +58,7 @@ class Game:
             self.dealers_cards(player)
             result = player.print_all()
             print(result)
-            print('Current Hand Value:', player.calculate_hand())
+            print('Dealer Hand Value:', player.calculate_hand())
 
         return player.calculate_hand()
     def show_player_cards_at_the_start(self, player):
