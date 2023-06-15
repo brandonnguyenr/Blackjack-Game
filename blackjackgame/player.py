@@ -20,14 +20,13 @@ class Player:
         if 'Ace' in [card.rank for card in self.hand] and value + 10 <= 21:
             value += 10
         return value
-    
     def print_all(self):
         """Print all the cards"""
         return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
-    
     def __str__(self):
         """Convert the player into a string."""
         if self.name == 'Dealer':
             return f"{self.name}: {str(self.hand[0])}, ?"
         else:
             return f"{self.name}: {', '.join(str(card) for card in self.hand)}"
+        
