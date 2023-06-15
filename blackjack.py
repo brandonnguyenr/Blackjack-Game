@@ -15,11 +15,9 @@ def main():
     dealer = player.Player('Dealer')
     name = input('\nEnter your name: ')
     player1 = player.Player(name)
-
-    #While: If input is valid take it, if not ask the question again.
     while True:
         betted_amount = input('Hello ' + name + ', how much would you like to bet \
-                                                          out of your $10,000?: $')
+out of your $10,000?: $')
         if not betted_amount.isdigit():
             print("Invalid input. Please enter a valid integer.")
             continue
@@ -61,8 +59,7 @@ def main():
                     print("Bet amount cannot exceed your amount.")
                 else:
                     break
-    print('\n\nHope you had fun! See you next time!')
+    print('\nHope you had fun! See you next time!')
 
 if __name__ == '__main__':
     main()
-    
